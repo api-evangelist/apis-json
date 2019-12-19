@@ -1,0 +1,49 @@
+{
+    "name": "APIs.json",
+    "description": "Defining the next generation of API discovery.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2949-apis-json.jpg",
+    "tags": [
+        "api tools",
+        "discovery",
+        "have api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/apis-json\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "APIs.json",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2949-apis-json.jpg",
+            "humanURL": "http:\/\/apisjson.org\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis-json-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/apisjson.org\/blog\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/apisjson.org\/blog.xml"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/APIsjson"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/apisjson.org\/"
+        }
+    ]
+}
