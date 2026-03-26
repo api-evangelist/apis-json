@@ -1,0 +1,55 @@
+aid: apis-json
+name: APIs.json
+description: >-
+  APIs.json is an open, machine-readable specification that API providers can
+  use to describe their API operations, similar to how websites use sitemap.xml.
+  It provides a format for API discovery and cataloging, enabling search engines
+  like APIs.io to index API collections across the web.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API Aggregation
+  - API Discovery
+  - Specification
+  - API Cataloging
+  - Machine Readable
+  - API Operations
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: apis-json:apis-json-specification
+    name: APIs.json Specification
+    description: >-
+      The APIs.json specification defines a machine-readable JSON format for
+      describing API operations. It does not describe APIs like OpenAPI does,
+      but describes surrounding API operations with entries that can reference
+      OpenAPI or any other format. It was created by Kin Lane and Steven
+      Willmott in May 2014.
+    humanURL: https://apisjson.org
+    tags:
+      - API Discovery
+      - Specification
+      - API Description
+      - Machine Readable
+    properties:
+      - type: Documentation
+        url: https://apisjson.org/format/
+      - type: Specification
+        url: https://apisjson.org/format/
+      - type: Properties
+        url: https://apisjson.org/properties/
+common:
+  - type: Website
+    url: https://apisjson.org
+  - type: Properties
+    url: https://apisjson.org/properties/
+  - type: GitHub Organization
+    url: https://github.com/apis-json
+  - type: GitHub Repository
+    url: https://github.com/apis-json/api-json
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
