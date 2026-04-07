@@ -9,11 +9,11 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API Aggregation
-  - API Discovery
-  - Specification
   - API Cataloging
-  - Machine Readable
+  - API Discovery
   - API Operations
+  - Machine Readable
+  - Specification
 url: >-
   https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -30,10 +30,10 @@ apis:
       Willmott in May 2014.
     humanURL: https://apisjson.org
     tags:
-      - API Discovery
-      - Specification
       - API Description
+      - API Discovery
       - Machine Readable
+      - Specification
     properties:
       - type: Documentation
         url: https://apisjson.org/format/
