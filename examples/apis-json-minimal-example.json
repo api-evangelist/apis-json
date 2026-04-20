@@ -1,0 +1,75 @@
+{
+  "aid": "example.com:api-collection",
+  "name": "Example API Collection",
+  "description": "A minimal example APIs.json file demonstrating required fields for the APIs.json 0.19 specification.",
+  "image": "https://example.com/logo.png",
+  "url": "https://example.com/apis.json",
+  "tags": [
+    "Example",
+    "Demonstration"
+  ],
+  "created": "2024-01-01",
+  "modified": "2024-11-06",
+  "specificationVersion": "0.19",
+  "type": "Index",
+  "apis": [
+    {
+      "aid": "example.com:example-api",
+      "name": "Example REST API",
+      "description": "A simple REST API for demonstrating APIs.json property types and structure.",
+      "humanURL": "https://developer.example.com",
+      "baseURL": "https://api.example.com",
+      "image": "https://example.com/api-logo.png",
+      "tags": [
+        "REST",
+        "Example"
+      ],
+      "properties": [
+        {
+          "type": "Documentation",
+          "url": "https://developer.example.com/docs"
+        },
+        {
+          "type": "OpenAPI",
+          "url": "https://developer.example.com/openapi.yaml"
+        },
+        {
+          "type": "Authentication",
+          "url": "https://developer.example.com/authentication"
+        },
+        {
+          "type": "Pricing",
+          "url": "https://example.com/pricing"
+        }
+      ]
+    }
+  ],
+  "common": [
+    {
+      "type": "Website",
+      "url": "https://example.com"
+    },
+    {
+      "type": "Support",
+      "url": "https://developer.example.com/support"
+    },
+    {
+      "type": "TermsOfService",
+      "url": "https://example.com/terms"
+    },
+    {
+      "type": "PrivacyPolicy",
+      "url": "https://example.com/privacy"
+    },
+    {
+      "type": "GitHubOrganization",
+      "url": "https://github.com/example"
+    }
+  ],
+  "maintainers": [
+    {
+      "FN": "Jane Smith",
+      "email": "jane@example.com"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "apij": "https://apisjson.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "APIsJSON": "apij:APIsJSON",
+    "APIEntry": "apij:APIEntry",
+    "Property": "apij:Property",
+    "Contact": "apij:Contact",
+    "Include": "apij:Include",
+    "Overlay": "apij:Overlay",
+    "Network": "apij:Network",
+
+    "aid": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "humanUrl": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "baseURL": {
+      "@id": "apij:baseURL",
+      "@type": "@id"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:date"
+    },
+    "specificationVersion": {
+      "@id": "apij:specificationVersion",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "apij:type",
+      "@type": "xsd:string"
+    },
+    "position": {
+      "@id": "apij:position",
+      "@type": "xsd:string"
+    },
+    "access": {
+      "@id": "apij:access",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "apis": {
+      "@id": "apij:apis",
+      "@container": "@set"
+    },
+    "common": {
+      "@id": "apij:common",
+      "@container": "@set"
+    },
+    "properties": {
+      "@id": "apij:properties",
+      "@container": "@set"
+    },
+    "maintainers": {
+      "@id": "apij:maintainers",
+      "@container": "@set"
+    },
+    "contact": {
+      "@id": "schema:contactPoint",
+      "@container": "@set"
+    },
+    "include": {
+      "@id": "apij:include",
+      "@container": "@set"
+    },
+    "overlays": {
+      "@id": "apij:overlays",
+      "@container": "@set"
+    },
+    "network": {
+      "@id": "apij:network",
+      "@container": "@set"
+    },
+    "FN": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "organizationName": {
+      "@id": "schema:legalName",
+      "@type": "xsd:string"
+    },
+    "mediaType": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "apij:data"
+    }
+  }
+}

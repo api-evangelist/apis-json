@@ -1,0 +1,148 @@
+{
+  "aid": "acme.com:api-collection",
+  "name": "Acme Corporation APIs",
+  "description": "Complete example APIs.json demonstrating all major field types and properties for an enterprise API portfolio using the APIs.json 0.19 specification.",
+  "image": "https://acme.com/logo.png",
+  "url": "https://acme.com/apis.json",
+  "tags": [
+    "Commerce",
+    "Enterprise",
+    "REST"
+  ],
+  "created": "2023-06-01",
+  "modified": "2024-11-06",
+  "specificationVersion": "0.19",
+  "type": "Index",
+  "position": "Producer",
+  "access": "Public",
+  "apis": [
+    {
+      "aid": "acme.com:orders-api",
+      "name": "Acme Orders API",
+      "description": "RESTful API for creating, managing, and tracking customer orders in real-time. Supports order lifecycle management from placement to fulfillment.",
+      "humanURL": "https://developer.acme.com/orders",
+      "baseURL": "https://api.acme.com/v2/orders",
+      "image": "https://acme.com/orders-logo.png",
+      "version": "2.1.0",
+      "tags": [
+        "Orders",
+        "Commerce",
+        "REST"
+      ],
+      "properties": [
+        {
+          "type": "Documentation",
+          "url": "https://developer.acme.com/orders/docs"
+        },
+        {
+          "type": "OpenAPI",
+          "url": "https://developer.acme.com/orders/openapi.yaml"
+        },
+        {
+          "type": "GettingStarted",
+          "url": "https://developer.acme.com/orders/getting-started"
+        },
+        {
+          "type": "Authentication",
+          "url": "https://developer.acme.com/authentication"
+        },
+        {
+          "type": "RateLimits",
+          "url": "https://developer.acme.com/rate-limits"
+        },
+        {
+          "type": "ChangeLog",
+          "url": "https://developer.acme.com/orders/changelog"
+        }
+      ]
+    },
+    {
+      "aid": "acme.com:products-api",
+      "name": "Acme Products API",
+      "description": "API for accessing and managing the Acme product catalog, including product details, pricing, inventory, and categories.",
+      "humanURL": "https://developer.acme.com/products",
+      "baseURL": "https://api.acme.com/v2/products",
+      "image": "https://acme.com/products-logo.png",
+      "version": "2.0.0",
+      "tags": [
+        "Products",
+        "Catalog",
+        "Commerce"
+      ],
+      "properties": [
+        {
+          "type": "Documentation",
+          "url": "https://developer.acme.com/products/docs"
+        },
+        {
+          "type": "OpenAPI",
+          "url": "https://developer.acme.com/products/openapi.yaml"
+        },
+        {
+          "type": "Webhooks",
+          "url": "https://developer.acme.com/products/webhooks"
+        }
+      ]
+    }
+  ],
+  "common": [
+    {
+      "type": "Website",
+      "url": "https://acme.com"
+    },
+    {
+      "type": "GettingStarted",
+      "url": "https://developer.acme.com/getting-started"
+    },
+    {
+      "type": "Authentication",
+      "url": "https://developer.acme.com/authentication"
+    },
+    {
+      "type": "Pricing",
+      "url": "https://acme.com/pricing"
+    },
+    {
+      "type": "TermsOfService",
+      "url": "https://acme.com/terms"
+    },
+    {
+      "type": "PrivacyPolicy",
+      "url": "https://acme.com/privacy"
+    },
+    {
+      "type": "Support",
+      "url": "https://developer.acme.com/support"
+    },
+    {
+      "type": "StatusPage",
+      "url": "https://status.acme.com"
+    },
+    {
+      "type": "Blog",
+      "url": "https://developer.acme.com/blog"
+    },
+    {
+      "type": "GitHubOrganization",
+      "url": "https://github.com/acme"
+    },
+    {
+      "type": "SDKs",
+      "url": "https://developer.acme.com/sdks"
+    }
+  ],
+  "include": [
+    {
+      "name": "Acme Partner APIs",
+      "url": "https://partners.acme.com/apis.json"
+    }
+  ],
+  "maintainers": [
+    {
+      "FN": "Acme Developer Relations",
+      "email": "devrel@acme.com",
+      "organizationName": "Acme Corporation",
+      "url": "https://developer.acme.com"
+    }
+  ]
+}

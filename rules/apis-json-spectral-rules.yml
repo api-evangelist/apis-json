@@ -1,0 +1,295 @@
+rules:
+  # ROOT LEVEL — REQUIRED FIELDS
+  root-name-required:
+    description: APIs.json root must have a name field
+    severity: error
+    given: "$"
+    then:
+      field: name
+      function: truthy
+
+  root-description-required:
+    description: APIs.json root must have a description field
+    severity: error
+    given: "$"
+    then:
+      field: description
+      function: truthy
+
+  root-url-required:
+    description: APIs.json root must have a url field pointing to the file location
+    severity: error
+    given: "$"
+    then:
+      field: url
+      function: truthy
+
+  root-url-https:
+    description: APIs.json root url should use HTTPS
+    severity: warn
+    given: "$.url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  root-created-required:
+    description: APIs.json root must have a created date
+    severity: error
+    given: "$"
+    then:
+      field: created
+      function: truthy
+
+  root-modified-required:
+    description: APIs.json root must have a modified date
+    severity: error
+    given: "$"
+    then:
+      field: modified
+      function: truthy
+
+  root-specification-version-required:
+    description: APIs.json root must have a specificationVersion field
+    severity: error
+    given: "$"
+    then:
+      field: specificationVersion
+      function: truthy
+
+  root-aid-recommended:
+    description: APIs.json root should have an aid (unique identifier) field
+    severity: warn
+    given: "$"
+    then:
+      field: aid
+      function: truthy
+
+  root-aid-format:
+    description: APIs.json aid should follow the format domain:string
+    severity: warn
+    given: "$.aid"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z0-9.-]+:[a-z0-9._-]+$"
+
+  root-maintainers-recommended:
+    description: APIs.json root should have maintainers defined
+    severity: warn
+    given: "$"
+    then:
+      field: maintainers
+      function: truthy
+
+  root-tags-recommended:
+    description: APIs.json root should have tags for discoverability
+    severity: info
+    given: "$"
+    then:
+      field: tags
+      function: truthy
+
+  root-image-recommended:
+    description: APIs.json root should have an image URL for visual representation
+    severity: info
+    given: "$"
+    then:
+      field: image
+      function: truthy
+
+  # MAINTAINERS
+  maintainer-fn-required:
+    description: Maintainer entries must have an FN (full name) field
+    severity: error
+    given: "$.maintainers[*]"
+    then:
+      field: FN
+      function: truthy
+
+  maintainer-fn-not-empty:
+    description: Maintainer FN must not be empty
+    severity: error
+    given: "$.maintainers[*].FN"
+    then:
+      function: minLength
+      functionOptions:
+        limit: 1
+
+  maintainer-email-format:
+    description: Maintainer email should be a valid email format
+    severity: warn
+    given: "$.maintainers[*].email"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[^@]+@[^@]+\\.[^@]+$"
+
+  # APIs ENTRIES
+  api-aid-required:
+    description: Each API entry must have an aid (unique identifier)
+    severity: error
+    given: "$.apis[*]"
+    then:
+      field: aid
+      function: truthy
+
+  api-aid-format:
+    description: API aid should follow the format domain:string
+    severity: warn
+    given: "$.apis[*].aid"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z0-9.-]+:[a-z0-9._-]+$"
+
+  api-name-required:
+    description: Each API entry must have a name
+    severity: error
+    given: "$.apis[*]"
+    then:
+      field: name
+      function: truthy
+
+  api-description-required:
+    description: Each API entry must have a description
+    severity: error
+    given: "$.apis[*]"
+    then:
+      field: description
+      function: truthy
+
+  api-description-min-length:
+    description: API description should be descriptive (at least 20 characters)
+    severity: warn
+    given: "$.apis[*].description"
+    then:
+      function: minLength
+      functionOptions:
+        limit: 20
+
+  api-human-url-required:
+    description: Each API entry should have a humanURL
+    severity: warn
+    given: "$.apis[*]"
+    then:
+      field: humanURL
+      function: truthy
+
+  api-human-url-https:
+    description: API humanURL should use HTTPS
+    severity: warn
+    given: "$.apis[*].humanURL"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  api-base-url-https:
+    description: API baseURL should use HTTPS
+    severity: warn
+    given: "$.apis[*].baseURL"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  api-tags-recommended:
+    description: Each API entry should have tags for discoverability
+    severity: info
+    given: "$.apis[*]"
+    then:
+      field: tags
+      function: truthy
+
+  api-properties-recommended:
+    description: Each API entry should have at least one property
+    severity: warn
+    given: "$.apis[*]"
+    then:
+      field: properties
+      function: truthy
+
+  # COMMON PROPERTIES
+  common-website-recommended:
+    description: Common properties should include a Website entry
+    severity: info
+    given: "$.common"
+    then:
+      function: truthy
+
+  # PROPERTY ENTRIES
+  property-type-required:
+    description: Each property entry must have a type field
+    severity: error
+    given: "$..properties[*]"
+    then:
+      field: type
+      function: truthy
+
+  property-url-or-data-required:
+    description: Each property entry must have either a url or data field
+    severity: error
+    given: "$..properties[*]"
+    then:
+      function: truthy
+
+  property-url-https:
+    description: Property URLs should use HTTPS
+    severity: warn
+    given: "$..properties[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  # GENERAL QUALITY
+  no-empty-names:
+    description: Name fields must not be empty strings
+    severity: error
+    given: "$..name"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  no-empty-descriptions:
+    description: Description fields must not be empty strings
+    severity: error
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  specification-version-current:
+    description: specificationVersion should use the latest stable version (0.19)
+    severity: info
+    given: "$.specificationVersion"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^0\\.(1[5-9]|[2-9][0-9])"
+
+  documentation-property-recommended:
+    description: APIs should have a Documentation property for human-readable reference
+    severity: info
+    given: "$.apis[*].properties[*].type"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Documentation
+          - APIReference
+
+  openapi-property-recommended:
+    description: APIs should have an OpenAPI property for machine-readable interface definition
+    severity: info
+    given: "$.apis[*].properties[*].type"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - OpenAPI
+          - Swagger
+          - AsyncAPI

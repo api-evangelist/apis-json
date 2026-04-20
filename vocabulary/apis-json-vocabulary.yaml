@@ -1,0 +1,309 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "APIs.json"
+  description: "Normative vocabulary and taxonomy for the APIs.json specification v0.19, covering all required and optional fields, property types, conformance levels, and the semantic relationships between specification concepts."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: apis-json-spec
+      version: "0.19"
+      baseUrl: https://apisjson.org
+      status: active
+      description: "APIs.json specification — not an HTTP API but a file-based specification format"
+
+  resources:
+    - name: apis-json-file
+      description: "The root APIs.json or APIs.yaml file placed at a domain root"
+      apis:
+        - apis-json-spec
+      actions:
+        - create
+        - validate
+        - discover
+
+    - name: api-entry
+      description: "An individual API entry within an APIs.json file's apis array"
+      apis:
+        - apis-json-spec
+      actions:
+        - define
+        - document
+
+    - name: property
+      description: "A typed URL or data entry describing an operational aspect of an API"
+      apis:
+        - apis-json-spec
+      actions:
+        - reference
+        - enumerate
+
+    - name: common-properties
+      description: "Properties shared across all APIs in a collection"
+      apis:
+        - apis-json-spec
+      actions:
+        - define
+        - reference
+
+  actions:
+    - name: create
+      description: "Author an APIs.json file documenting API operations"
+      httpMethod: null
+      pattern: write
+
+    - name: validate
+      description: "Validate an APIs.json file against the JSON Schema"
+      httpMethod: null
+      pattern: read
+
+    - name: discover
+      description: "Discover APIs.json files via domain root or search engine"
+      httpMethod: GET
+      pattern: read
+
+    - name: define
+      description: "Define fields and properties in an APIs.json document"
+      httpMethod: null
+      pattern: write
+
+    - name: document
+      description: "Document API operations using property references"
+      httpMethod: null
+      pattern: write
+
+    - name: reference
+      description: "Reference external resources via URL property entries"
+      httpMethod: null
+      pattern: read
+
+    - name: enumerate
+      description: "Enumerate from the defined list of property type values"
+      httpMethod: null
+      pattern: read
+
+  schemas:
+    core:
+      - name: APIsJSONRoot
+        description: "Root object of an APIs.json document with name, description, url, apis, common, and maintainers"
+        keyProperties:
+          - aid
+          - name
+          - description
+          - url
+          - specificationVersion
+          - created
+          - modified
+          - apis
+          - common
+          - maintainers
+
+      - name: APIEntry
+        description: "Individual API entry in the apis array with name, description, humanURL, baseURL, tags, and properties"
+        keyProperties:
+          - aid
+          - name
+          - description
+          - humanURL
+          - baseURL
+          - tags
+          - properties
+          - contact
+
+      - name: Property
+        description: "A typed URL or data entry pointing to an operational resource"
+        keyProperties:
+          - type
+          - url
+          - data
+          - name
+          - description
+          - mediaType
+
+      - name: Contact
+        description: "Contact information using vCard-inspired fields"
+        keyProperties:
+          - FN
+          - email
+          - organizationName
+          - url
+
+      - name: Include
+        description: "Reference to another APIs.json file for federation"
+        keyProperties:
+          - name
+          - url
+
+      - name: Overlay
+        description: "Overlay modification specification for an existing APIs.json"
+        keyProperties:
+          - name
+          - url
+
+  parameters:
+    identifiers:
+      - name: aid
+        description: "Unique API identifier in format domain:string (e.g. apis.json:spec)"
+        type: string
+        format: "domain:kebab-slug"
+
+  enums:
+    property-types:
+      # Machine-readable specs
+      - OpenAPI
+      - AsyncAPI
+      - JSONSchema
+      - GraphQLSchema
+      - PostmanCollection
+      - PostmanWorkspace
+      - Swagger
+      - RAML
+      - Blueprint
+      - WADL
+      - WSDL
+      # Developer experience
+      - GettingStarted
+      - Documentation
+      - Authentication
+      - Versioning
+      - Signup
+      - Login
+      - TermsOfService
+      - InterfaceLicense
+      - PrivacyPolicy
+      - DeprecationPolicy
+      - ServiceLevelAgreement
+      # Operations
+      - Security
+      - SDKs
+      - StatusPage
+      - Pricing
+      - RateLimits
+      - ChangeLog
+      - RoadMap
+      # Community
+      - Blog
+      - BlogFeed
+      - Forums
+      - Support
+      - Contact
+      - ErrorCodes
+      # Source control and social
+      - GitHubOrg
+      - GitHubRepo
+      - Twitter
+      - AlertsTwitterHandle
+      # Integration
+      - Webhooks
+      - Integrations
+      - OpenAIPluginManifest
+
+    collection-types:
+      - Index
+      - Collection
+      - Blueprint
+
+    position-types:
+      - Producer
+      - Consumer
+      - Both
+
+    conformance-levels:
+      - name: Minimal
+        description: "MUST have name, description, url, created, modified, specificationVersion"
+      - name: Discoverable
+        description: "Minimal plus aid, maintainers, and at least one api entry with humanURL"
+      - name: Complete
+        description: "Discoverable plus common properties (Website, Documentation) and api properties (OpenAPI, Authentication)"
+      - name: Production
+        description: "Complete plus terms of service, privacy policy, support, and status page"
+
+  authentication:
+    schemes:
+      - type: none
+        description: "APIs.json is a file format, not an HTTP API — no authentication required for the specification itself"
+
+capability:
+  workflows:
+    - name: API Operations Documentation
+      file: null
+      description: "Documenting API operations using the APIs.json specification format to enable discovery and governance"
+      apisCombined: []
+      toolCount: 0
+      personas:
+        - API Provider
+        - Platform Engineer
+
+  personas:
+    - id: api-provider
+      name: API Provider
+      description: "An organization or individual publishing APIs who uses APIs.json to document their API operations"
+      workflows:
+        - API Operations Documentation
+
+    - id: platform-engineer
+      name: Platform Engineer
+      description: "An engineer building API governance platforms, portals, or catalogs using APIs.json as the metadata format"
+      workflows:
+        - API Operations Documentation
+
+    - id: api-consumer
+      name: API Consumer
+      description: "A developer discovering and evaluating APIs using APIs.json files published by providers"
+      workflows:
+        - API Operations Documentation
+
+  domains:
+    - name: API Operations
+      description: "Non-technical aspects of API delivery: documentation, pricing, governance, support"
+      resources:
+        - property
+        - common-properties
+
+    - name: API Discovery
+      description: "Finding and indexing APIs via domain-root APIs.json files"
+      resources:
+        - apis-json-file
+
+    - name: API Governance
+      description: "Enforcing organizational standards for API operations via required property types"
+      resources:
+        - apis-json-file
+        - api-entry
+
+  binds:
+    - description: "No environment variables required — APIs.json is a file format specification"
+
+crossReference:
+  - resource: apis-json-file
+    operations:
+      - create-apis-json
+      - validate-apis-json
+      - discover-apis
+    workflows:
+      - API Operations Documentation
+    personas:
+      - API Provider
+      - Platform Engineer
+
+  - resource: api-entry
+    operations:
+      - define-api
+      - document-properties
+    workflows:
+      - API Operations Documentation
+    personas:
+      - API Provider
+
+  - resource: property
+    operations:
+      - reference-openapi
+      - reference-documentation
+      - reference-authentication
+    workflows:
+      - API Operations Documentation
+    personas:
+      - API Provider
+      - API Consumer
