@@ -77,6 +77,8 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.20.yaml
         title: Schema v0.20 (Draft)
 common:
+  - type: DomainSecurity
+    url: security/apis-json-domain-security.yml
   - type: Website
     url: https://apisjson.org
   - type: Properties
