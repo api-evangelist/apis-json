@@ -16,7 +16,19 @@ description: >-
   documentation, authentication, licensing, support, and governance. It is the
   foundation for the APIs.io search engine and API Commons initiative.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apis-json.png
 tags:
   - API Aggregation
   - API Cataloging
