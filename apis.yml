@@ -36,6 +36,16 @@ tags:
   - API Discovery
   - API Governance
   - API Operations
+  - Machine-Readable
+  - Specification
+  - Standard
+tags_raw:
+  - API Aggregation
+  - API Cataloging
+  - API Commons
+  - API Discovery
+  - API Governance
+  - API Operations
   - Machine Readable
   - Specification
   - Standard
@@ -60,6 +70,13 @@ apis:
       engines.
     humanURL: https://apisjson.org
     tags:
+      - API Description
+      - API Discovery
+      - API Operations
+      - Machine-Readable
+      - Specification
+      - Standard
+    tags_raw:
       - API Description
       - API Discovery
       - API Operations
