@@ -16,6 +16,18 @@ description: >-
   documentation, authentication, licensing, support, and governance. It is the
   foundation for the APIs.io search engine and API Commons initiative.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: MIT
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
