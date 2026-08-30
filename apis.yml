@@ -48,7 +48,7 @@ tags:
   - API Discovery
   - API Governance
   - API Operations
-  - Machine-Readable
+  - Machine Readable
   - Specification
   - Standard
 tags_raw:
@@ -85,7 +85,7 @@ apis:
       - API Description
       - API Discovery
       - API Operations
-      - Machine-Readable
+      - Machine Readable
       - Specification
       - Standard
     tags_raw:
