@@ -1,0 +1,105 @@
+generated: '2026-09-14'
+method: searched
+source: https://apisjson.org/ + https://github.com/apis-json/api-json
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Lifecycle posture of the APIs.json specification. APIs.json is a specification, not a
+  hosted API — there is no runtime to deprecate, no SLA and no status page. What it does
+  have is a versioning discipline, a public diff surface, and a retention record: every
+  draft ever published is still fetchable at its original URL.
+versioning:
+  scheme: informal-draft
+  pattern: '0.<minor>'
+  current: '0.23'
+  current_date: '2026-08-19'
+  first_published: '2014-05'
+  policy_documented: true
+  policy_source: https://apisjson.org/format/apisjson_0.23.txt
+  in_document_version_field: specificationVersion
+  notes:
+    - >-
+      Each release is a separately addressable plain-text draft at
+      https://apisjson.org/format/apisjson_<version>.txt, paired with a same-numbered
+      JSON Schema at spec/schema_<version>.yml in the specification repository.
+    - >-
+      Documents declare the version they were written against in the root
+      specificationVersion field, so a consumer can branch on it.
+    - >-
+      Releases 0.20, 0.22 and 0.23 are vocabulary-only — they widen the reserved
+      property-type list and do not change document structure. 0.19 and 0.21 are
+      structural: 0.19 added overlay references, 0.21 added the prompts, rules and
+      workflows collections and the kind field.
+retention:
+  policy: every-version-retained
+  verified: '2026-09-14'
+  evidence:
+    - url: https://apisjson.org/format/apisjson_0.11.txt
+      status: 200
+    - url: https://apisjson.org/format/apisjson_0.14.txt
+      status: 200
+    - url: https://apisjson.org/format/apisjson_0.17.txt
+      status: 200
+    - url: https://apisjson.org/format/apisjson_0.23.txt
+      status: 200
+  note: >-
+    All thirteen published drafts (0.11 through 0.23) resolve at their original URLs.
+    Nothing has been withdrawn, so an index written against an old version still has a
+    live normative reference.
+backward_compatibility:
+  stance: additive
+  breaking_changes_in_recent_window: false
+  note: >-
+    No release in the 0.19-0.23 window removed or renamed a field. The vocabulary
+    releases only add reserved type values, and 0.22/0.23 additionally accept synonym
+    spellings, which makes previously-invalid real-world documents valid rather than the
+    reverse.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_types: []
+  note: >-
+    No deprecation policy is published and no property type has been deprecated. The
+    specification's direction of travel is promotion — types move from the x- extension
+    space into the reserved list once measured adoption justifies it — not removal.
+status_page:
+  present: false
+  probed:
+    - url: https://status.apisjson.org
+      status: 000
+      note: DNS does not resolve.
+    - url: https://apisjson.org/status/
+      status: 404
+  note: >-
+    Not applicable in the usual sense. The specification surface is a static GitHub
+    Pages site and the specification itself defines no callable API, so there is no
+    availability to report.
+sla:
+  published: false
+  note: No service-level agreement — the artifact is a document, not a service.
+roadmap:
+  published: false
+  probed:
+    - url: https://apisjson.org/roadmap/
+      status: 404
+  substitutes:
+    - url: https://github.com/apis-json/api-json/issues
+      description: Issue tracker where specification changes are proposed.
+      status: 200
+    - url: https://github.com/orgs/apis-json/discussions
+      description: Organization discussions.
+    - url: https://github.com/apis-json/diff
+      description: Rendered version-to-version diffs, one pull request per release pair.
+governance:
+  model: informal-ietf-style-draft
+  authors:
+    - Kin Lane
+    - Steve Willmott
+  license: MIT
+  license_url: https://github.com/apis-json/api-json/blob/develop/LICENSE
+  repository: https://github.com/apis-json/api-json
+  default_branch: develop
+  note: >-
+    Changes land on the develop branch of apis-json/api-json; raw schema fetches must
+    use develop, not main, which does not exist.

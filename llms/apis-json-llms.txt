@@ -1,0 +1,165 @@
+# APIs.json
+
+> APIs.json is an open, MIT-licensed, machine-readable format for describing API
+> operations — a sitemap.xml for APIs. It does not describe the technical interface of
+> an API (that is OpenAPI's job); it indexes everything around it: where the contract
+> lives, the documentation, authentication, pricing, terms of service, support, the
+> governance rulesets, the workflows and, since 0.22, the agent surface. Created by Kin
+> Lane and Steve Willmott in May 2014 and maintained as an informal IETF-style draft.
+
+Current stable version: 0.23 (published 2026-08-19).
+Canonical home: https://apisjson.org
+Specification repository: https://github.com/apis-json/api-json (default branch: develop)
+
+## What you need to know first
+
+- APIs.json is a DOCUMENT FORMAT, not a callable API. There is no endpoint, no API key,
+  no plan, no rate limit, and no SDK on any package registry. If you are looking for an
+  API to call, the thing built ON this format is APIs.io.
+- A document is published at the root of a domain as /apis.json or /apis.yml. A consumer
+  fetches it; 2xx means parse and follow, 404 means no instructions are available.
+- The document declares which version it was written against in the root
+  `specificationVersion` field. Branch on that, not on structure sniffing.
+- Extension keys and extension property types are prefixed `x-` or `X-`. Lower case is
+  preferred. Anything else unreserved is invalid — the schema sets
+  `additionalProperties: false`.
+
+## Specification drafts
+
+Every draft ever published is still live at its original URL; nothing has been withdrawn.
+
+- 0.23 (current): https://apisjson.org/format/apisjson_0.23.txt
+- 0.22: https://apisjson.org/format/apisjson_0.22.txt
+- 0.21: https://apisjson.org/format/apisjson_0.21.txt
+- 0.20: https://apisjson.org/format/apisjson_0.20.txt
+- 0.19: https://apisjson.org/format/apisjson_0.19.txt
+- Earlier drafts 0.11 through 0.18 follow the same URL pattern.
+
+## JSON Schema
+
+Machine-readable validation schemas, one per version, JSON Schema draft 2020-12.
+
+- 0.23: https://raw.githubusercontent.com/apis-json/api-json/develop/spec/schema_0.23.yml
+- 0.22: https://raw.githubusercontent.com/apis-json/api-json/develop/spec/schema_0.22.yml
+- 0.21: https://raw.githubusercontent.com/apis-json/api-json/develop/spec/schema_0.21.yml
+- Schema index (rendered, per-field): https://apisjson.org/schema/
+
+Note: fetch schemas from the `develop` branch. There is no `main` branch on the
+specification repository, and a raw fetch against `main` returns 404.
+
+## Property type reference
+
+- Reserved property types: https://apisjson.org/properties/
+
+The `type` field on each entry is the whole point of the format — it is how a consumer
+knows what a URL contains without fetching it. 0.23 repaired the reserved-words listing,
+which had drifted 117 canonical types behind the schema; the listing is now generated
+from the schema and the two are verified to agree.
+
+## Document shape (0.23)
+
+Root (required: name, description, url, apis, maintainers, tags):
+  aid, name, description, url, image, created, modified, specificationVersion,
+  visibility (Public|Private|Partner), rating (A-F), type (Index|Template|Example|
+  Collection|Sandbox|Knowledgebase|Blueprint|Contract|Search|Network), kind,
+  position (Producing|Consuming), access (Internal|1st-Party|3rd-Party)
+
+Collections on the root:
+  apis[]        — the APIs this index describes
+  maintainers[] — who is responsible (vCard-derived shape)
+  common[]      — resources that apply across every API in the index
+  prompts[]     — AI prompts (added 0.21)
+  rules[]       — governance rulesets, e.g. Spectral (added 0.21)
+  workflows[]   — multi-step jobs, e.g. Arazzo (added 0.21)
+  include[]     — pointers to other APIs.json indexes; the federation edge
+  overlays[]    — overlay documents that modify this index
+  network[]     — networks this index participates in
+  tags[]
+
+Each api[] entry (required: name, description, image, baseURL, humanURL, properties):
+  aid, name, description, image, created, modified, baseURL, humanURL, tags,
+  properties[], prompts[], rules[], workflows[], contact[], meta[]
+
+properties, common, prompts, rules and workflows all share ONE entry shape:
+  type (required), then either url or data (exactly one), plus optional name,
+  description, mediaType, tags.
+
+## Discovery and authority rules
+
+- Access method (3.1): root-relative /apis.* over HTTP or HTTPS.
+- Authoritative (3.2.1): an entry is authoritative when the described API's root domain
+  is the same DNS domain or a subdomain of the index's domain — or, as of 0.23, when
+  that domain is listed on the associated GitHub organization profile.
+- Conflict resolution (3.2.4): authoritative beats non-authoritative; between two
+  authoritative entries, the file closest to the API's root domain wins.
+- Caching (3.4): honour Expires; default to a 7-day expiry when no cache-control
+  directive is present.
+- Authority by reference (3.2.3) is explicitly unresolved and marked "For Discussion".
+
+## Registration status — read this before assuming interoperability
+
+The draft states an INTENT to register three things. None has happened, verified against
+the IANA registries on 2026-09-14:
+
+- Media type `application/apis+json` — NOT registered. Documents are served as generic
+  text/yaml or application/json. There is no content type to negotiate on.
+- Link relation `rel="api"` — NOT registered. The IANA link-relations registry carries
+  `api-catalog` (RFC 9727) but no `api` relation.
+- Well-known URI `/apis.json` — NOT registered. The access method is root-relative, not
+  a /.well-known/ path. apisjson.org itself serves no /.well-known/ documents.
+
+## Release history
+
+- 0.23 (2026-08-19) — vocabulary. Registers ContentSignal, APIKeys, APIKey, Standard,
+  Certification, Licensing. Repairs the reserved-words listing.
+- 0.22 (2026-08-11) — vocabulary, the largest to date. ~60 types promoted by measured
+  use across 26,598 indexes (DomainSecurity alone on 23,135), plus a synonym layer.
+- 0.21 (2026-06-26) — structural. Adds prompts, rules and workflows collections at both
+  levels, and documents the top-level `kind` field.
+- 0.20 (2026-05-02) — vocabulary. Moves JSONStructure, Vocabulary, SpectralRules,
+  AgentSkills, LlmsText, ModelContextProtocol and others into the reserved list.
+- 0.19 (2026-05-03) — structural. Overlay references; first-class GitHubOrg, GitHubRepo,
+  PostmanCollection, PostmanWorkspace, AsyncAPI types.
+
+No release in this window removed or renamed a field. The vocabulary releases only add,
+so previously-invalid real-world documents become valid, never the reverse.
+
+## Tooling
+
+First-party, source-distributed only — nothing is published to npm, PyPI, RubyGems or
+crates.io:
+- https://github.com/apis-json/builder — browser-based authoring tool (last push 2023)
+- https://github.com/apis-json/backstage — Backstage integration (last push 2023)
+- https://github.com/apis-json/diff — rendered version-to-version diffs
+- https://github.com/apis-json/artisanal — hand-crafted example documents
+
+To validate a document you wire the published JSON Schema into your own validator; there
+is no installable first-party CLI or library.
+
+## Community and governance
+
+- Issues: https://github.com/apis-json/api-json/issues
+- Discussions: https://github.com/orgs/apis-json/discussions
+- Blog: https://apisjson.org/blog/
+- License: MIT — https://github.com/apis-json/api-json/blob/develop/LICENSE
+- Built on it: https://apis.io (search engine), https://apicommons.org
+
+## Optional — API Evangelist derived artifacts for this record
+
+- Changelog: changelog/apis-json-changelog.yml
+- Lifecycle and versioning: lifecycle/apis-json-lifecycle.yml
+- Standards conformance: conformance/apis-json-conformance.yml
+- Discovery conventions: conventions/apis-json-conventions.yml
+- Data model (derived from schema 0.23): data-model/apis-json-data-model.yml
+- Well-known probe: well-known/apis-json-well-known.yml
+- Packages: packages/apis-json-packages.yml
+- Spectral ruleset for validating an APIs.json document: rules/apis-json-spectral-rules.yml
+- Controlled vocabulary: vocabulary/apis-json-vocabulary.yaml
+- JSON-LD context: json-ld/apis-json-context.jsonld
+- Worked examples: examples/apis-json-minimal-example.json, examples/apis-json-complete-example.json
+
+---
+generated: 2026-09-14
+method: generated
+source: apis.yml + repo artifacts + https://apisjson.org/format/apisjson_0.23.txt
+note: apisjson.org/llms.txt returns 404 (probed 2026-09-14); this file is generated, not provider-published.

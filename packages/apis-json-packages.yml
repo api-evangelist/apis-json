@@ -1,0 +1,111 @@
+generated: '2026-09-14'
+method: searched
+source: >-
+  registry.npmjs.org (direct lookups + full-text search), pypi.org, rubygems.org,
+  crates.io, and the apis-json GitHub organization listing
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Client library / package inventory for APIs.json. The honest result is zero: there is
+  no first-party APIs.json package on any public registry. This is a measured absence,
+  not an unchecked field — the exact-name lookups and the registry search below all ran
+  on 2026-09-14 and all missed. What the project does ship is source-distributed tooling
+  in its GitHub organization, recorded separately so the distinction between "installable
+  by a package manager" and "clone the repo" stays visible.
+package_count: 0
+official_package_count: 0
+sdk_count: 0
+packages: []
+registry_probes:
+  - registry: npm
+    query: apis-json
+    result: not-found
+  - registry: npm
+    query: apisjson
+    result: not-found
+  - registry: npm
+    query: apis.json
+    result: not-found
+  - registry: npm
+    query: apisjson-parser
+    result: not-found
+  - registry: npm
+    query: full-text search "apis.json"
+    result: no-first-party-match
+    note: >-
+      Twenty results returned; none is published by the apis-json organization or its
+      maintainers. The nearest neighbours are third-party OpenAPI/MCP tooling.
+  - registry: pypi
+    query: apis-json
+    result: not-found
+  - registry: pypi
+    query: apisjson
+    result: not-found
+  - registry: rubygems
+    query: apis-json
+    result: not-found
+  - registry: crates.io
+    query: apis-json
+    result: not-found
+source_distributed_tooling:
+  note: >-
+    First-party tools published as source only. None has a package-registry
+    distribution, so none carries a resolvable version — version is null by measurement,
+    not by omission. Dates are the last push to the default branch as reported by the
+    GitHub API on 2026-09-14.
+  entries:
+    - name: builder
+      official: true
+      registry: none
+      repository: https://github.com/apis-json/builder
+      description: Browser-based builder for authoring an APIs.json file.
+      version: null
+      published: null
+      last_push: '2023-10-06'
+      language: CSS
+    - name: backstage
+      official: true
+      registry: none
+      repository: https://github.com/apis-json/backstage
+      description: Tool for managing Backstage implementations with APIs.json.
+      version: null
+      published: null
+      last_push: '2023-12-10'
+    - name: diff
+      official: true
+      registry: none
+      repository: https://github.com/apis-json/diff
+      description: Renders the difference between two specification versions; one pull request per release pair.
+      version: null
+      published: null
+      last_push: '2026-06-20'
+    - name: artisanal
+      official: true
+      registry: none
+      repository: https://github.com/apis-json/artisanal
+      description: Hand-crafted example APIs.json documents.
+      version: null
+      published: null
+      last_push: '2024-10-07'
+    - name: apis-json-opionated
+      official: true
+      registry: none
+      repository: https://github.com/apis-json/apis-json-opionated
+      description: Exploration of more opinionated versions of the specification, running since 2015.
+      version: null
+      published: null
+      last_push: '2023-07-21'
+findings:
+  - >-
+    No SDKs pointer is emitted. An SDKs pointer with zero installable packages behind it
+    would be a false claim.
+  - >-
+    The decay signal here is real but it belongs to tooling, not to a client library:
+    builder, backstage and apis-json-opionated have not been touched since 2023, while
+    the specification itself moved through five releases (0.19 to 0.23) in 2026. The
+    builder predates the prompts, rules and workflows collections added in 0.21 and the
+    roughly seventy property types registered in 0.22 and 0.23.
+  - >-
+    A format specification does not strictly need a client library, but the absence of
+    any registry-installable validator is the gap most likely to be felt: consumers must
+    wire the published JSON Schema into their own validator by hand.

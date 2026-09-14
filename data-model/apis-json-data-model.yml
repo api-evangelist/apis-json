@@ -1,0 +1,159 @@
+generated: '2026-09-14'
+method: derived
+source: json-schema/apis-json-schema-0.23.yaml
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Entity-relationship graph of an APIs.json document, derived from the first-party JSON
+  Schema for version 0.23 ($defs and root properties, with $ref edges read literally).
+  Nothing here is invented: every entity, field, cardinality and enumeration below is
+  present in the schema. The graph is the specification's own data model, not a model of
+  some API it describes.
+spec_version: '0.23'
+schema: json-schema/apis-json-schema-0.23.yaml
+root_entity: index
+entities:
+  - name: index
+    description: >-
+      The APIs.json document itself — one machine-readable index describing an
+      organization, a standard, a collection or a single API's operations.
+    schema_location: root
+    required:
+      - name
+      - description
+      - url
+      - apis
+      - maintainers
+      - tags
+    fields:
+      - {name: aid, type: string, description: Unique identifier for the index.}
+      - {name: name, type: string, required: true}
+      - {name: description, type: string, required: true}
+      - {name: url, type: string, required: true, description: Self-referencing URL of this index.}
+      - {name: image, type: string}
+      - {name: created, type: string}
+      - {name: modified, type: string}
+      - {name: specificationVersion, type: string, description: The APIs.json version this document is written against.}
+      - {name: visibility, type: string, enum: [Public, Private, Partner]}
+      - {name: rating, type: string, enum: [A, B, C, D, F]}
+      - {name: type, type: string, enum: [Index, Template, Example, Collection, Sandbox, Knowledgebase, Blueprint, Contract, Search, Network]}
+      - {name: kind, type: string, description: "Classifies the entity the index is about (company, government, opensource, standard, contract, topic); documented in 0.21."}
+      - {name: position, type: string, enum: [Producing, Consuming]}
+      - {name: access, type: string, enum: [Internal, 1st-Party, 3rd-Party]}
+    extensibility: >-
+      patternProperties ^[Xx]- admits custom top-level objects; additionalProperties is
+      false otherwise, so an unreserved bare key is invalid.
+  - name: api
+    description: A single API described by the index.
+    schema_location: $defs.apis
+    required: [name, description, image, baseURL, humanURL, properties]
+    fields:
+      - {name: aid, type: string}
+      - {name: name, type: string, required: true, minLength: 2}
+      - {name: description, type: string, required: true, minLength: 5}
+      - {name: image, type: string, required: true}
+      - {name: baseURL, type: string, required: true, pattern: "^(http)|(https)://(.*)$"}
+      - {name: humanURL, type: string, required: true, pattern: "^(http)|(https)://(.*)$"}
+      - {name: created, type: string, format: date}
+      - {name: modified, type: string, format: date}
+      - {name: tags, type: array}
+  - name: url
+    description: >-
+      The universal link/resource entry. One shape is reused by properties, common,
+      prompts, rules and workflows — which is why a property, a governance ruleset and a
+      workflow are structurally identical and differ only by the collection they sit in
+      and their type value.
+    schema_location: $defs.urls
+    required: [type]
+    one_of: [url, data]
+    fields:
+      - {name: type, type: string, required: true, description: The reserved property type (OpenAPI, Documentation, Pricing, MCPServer, ...) or an x- extension.}
+      - {name: url, type: string, description: Location of the resource; mutually exclusive with data.}
+      - {name: data, type: object, description: Inline payload instead of a URL; mutually exclusive with url.}
+      - {name: name, type: string}
+      - {name: description, type: string}
+      - {name: mediaType, type: string, description: IANA media type of the referenced resource.}
+      - {name: tags, type: array}
+  - name: contact
+    description: A person or organization to reach about the index or an API.
+    schema_location: $defs.contact
+    required: [FN]
+    fields:
+      - {name: FN, type: string, required: true}
+      - {name: email, type: string, format: email}
+      - {name: organizationName, type: string}
+      - {name: adr, type: string}
+      - {name: tel, type: string}
+      - {name: url, type: string}
+      - {name: photo, type: string}
+      - {name: vCard, type: string}
+      - {name: X-twitter, type: string}
+      - {name: X-github, type: string}
+    note: >-
+      maintainers on the index and contact on an api entry both $ref this one entity, so
+      a maintainer and an API contact are the same shape.
+  - name: metaInformation
+    description: Arbitrary key/value metadata attached to an API entry.
+    schema_location: $defs.metaInformation
+    required: [key, value]
+    fields:
+      - {name: key, type: string, required: true}
+      - {name: value, type: string, required: true}
+  - name: include
+    description: A pointer to another APIs.json index, enabling federated directories.
+    schema_location: $defs.include
+    required: [name, url]
+    fields:
+      - {name: name, type: string, required: true}
+      - {name: url, type: string, required: true}
+  - name: overlay
+    description: An OpenAPI-Overlay-style document that modifies or extends this index.
+    schema_location: $defs.overlay
+    required: [url]
+    fields:
+      - {name: name, type: string}
+      - {name: url, type: string, required: true}
+  - name: network
+    description: A network this index participates in.
+    schema_location: $defs.network
+    required: [name, url]
+    fields:
+      - {name: name, type: string, required: true}
+      - {name: url, type: string, required: true}
+relationships:
+  - {from: index, to: api, cardinality: has_many, via: apis, ref: $defs.apis, required: true}
+  - {from: index, to: contact, cardinality: has_many, via: maintainers, ref: $defs.contact, required: true}
+  - {from: index, to: url, cardinality: has_many, via: common, ref: $defs.urls, note: Resources that apply across every API in the index.}
+  - {from: index, to: url, cardinality: has_many, via: prompts, ref: $defs.urls, since: '0.21'}
+  - {from: index, to: url, cardinality: has_many, via: rules, ref: $defs.urls, since: '0.21'}
+  - {from: index, to: url, cardinality: has_many, via: workflows, ref: $defs.urls, since: '0.21'}
+  - {from: index, to: include, cardinality: has_many, via: include, ref: $defs.include, note: Federation edge — an include points at another APIs.json index.}
+  - {from: index, to: overlay, cardinality: has_many, via: overlays, ref: $defs.overlay}
+  - {from: index, to: network, cardinality: has_many, via: network, ref: $defs.network}
+  - {from: index, to: tags, cardinality: has_many, via: tags, ref: $defs.tags, required: true}
+  - {from: api, to: url, cardinality: has_many, via: properties, ref: $defs.urls, required: true}
+  - {from: api, to: url, cardinality: has_many, via: prompts, ref: $defs.urls, since: '0.21'}
+  - {from: api, to: url, cardinality: has_many, via: rules, ref: $defs.urls, since: '0.21'}
+  - {from: api, to: url, cardinality: has_many, via: workflows, ref: $defs.urls, since: '0.21'}
+  - {from: api, to: contact, cardinality: has_many, via: contact, ref: $defs.contact}
+  - {from: api, to: metaInformation, cardinality: has_many, via: meta, ref: $defs.metaInformation}
+derived_observations:
+  - >-
+    The common/properties split is the model's central idea and it is expressed purely
+    by placement: both collections $ref the identical urls entity, so the only thing
+    distinguishing an index-wide resource from an API-specific one is which array it
+    sits in.
+  - >-
+    0.21's prompts, rules and workflows are not new shapes. They are three more arrays
+    of the same urls entity, mirrored at both levels — which is why the release is
+    structural but not breaking.
+  - >-
+    include is the only self-referential edge in the model: an index points at another
+    index, which is how federated catalogs compose.
+  - >-
+    The api entity has six required fields (name, description, image, baseURL, humanURL,
+    properties) against the index's six — notably image and baseURL are required on
+    every API entry, which is stricter than most published indexes in the wild.
+  - >-
+    There is no id-reference pattern anywhere in the model. Every relationship is
+    containment or an outbound URL; nothing joins by foreign key.

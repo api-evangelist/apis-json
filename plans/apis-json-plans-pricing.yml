@@ -1,148 +1,42 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+generated: '2026-09-14'
+method: searched
+source: https://apisjson.org/
 provider: APIs.json
 providerId: apis-json
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - API Aggregation
-  - API Cataloging
-  - API Commons
-  - API Discovery
-  - API Governance
-  - API Operations
-  - Machine Readable
-  - Specification
-  - Standard
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: apis-json-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the APIs.json API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: APIs.json Specification
-  - id: apis-json-pro
-    name: Professional
-    type: paid
-    description: Production tier for APIs.json. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: APIs.json Specification
-  - id: apis-json-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for APIs.json. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: APIs.json Specification
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+description: >-
+  APIs.json publishes no plans and no pricing, and would not be expected to. It is an
+  MIT-licensed open specification maintained as an informal IETF-style draft by Kin Lane
+  and Steve Willmott — a document format, not a service. There is nothing to meter, no
+  account to create, and no commercial motion of any kind on apisjson.org: the site is a
+  static GitHub Pages property serving the drafts, the JSON Schemas, the property
+  reference and a blog. This is a measured zero, not an unread field.
+plan_count: 0
+plans: []
+pricing_model: none-published
+commercial_model: open-specification
+license: MIT
+license_url: https://github.com/apis-json/api-json/blob/develop/LICENSE
+evidence:
+  - url: https://apisjson.org/pricing
+    status: 404
+  - url: https://apisjson.org/pricing/
+    status: 404
+  - url: https://apisjson.org/plans/
+    status: 404
+  - url: https://apisjson.org/
+    status: 200
+    note: >-
+      Site navigation is Home, Blog, Schema, Properties, Issues, Discussion, GitHub.
+      No pricing, plans, sign-up or account surface appears anywhere in the nav or footer.
+  - url: https://github.com/apis-json/api-json/blob/develop/LICENSE
+    status: 200
+    note: MIT license — the specification is free to implement without terms or fees.
+checked: '2026-09-14'
+supersedes:
+  previous_method: generated
+  previous_generated: '2026-05-04'
+  note: >-
+    This file replaces a bulk-sweep scaffold dated 2026-05-04 that invented a freemium
+    tier ("apis-json-free") for a provider that has no API product and no plans. The
+    scaffold's own description admitted the tiers were defaults to be replaced. Replaced
+    here with the measured result.

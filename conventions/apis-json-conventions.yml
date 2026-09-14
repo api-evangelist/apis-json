@@ -1,0 +1,153 @@
+generated: '2026-09-14'
+method: searched
+source: https://apisjson.org/format/apisjson_0.23.txt
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Cross-cutting semantics of the APIs.json specification. APIs.json is a document format
+  with no callable API surface of its own, so the runtime conventions this artifact
+  usually captures — auth style, pagination, idempotency, error envelopes, rate-limit
+  headers — do not apply and are recorded as na rather than as zeros. What IS defined,
+  and is captured here in full, is a set of DISCOVERY conventions: how a consumer finds
+  the document, which copy wins when two disagree, how it is cached, and how it is
+  extended.
+surface:
+  callable_api: false
+  surface_type: document-format
+  note: >-
+    The apisjson.org host serves a static GitHub Pages site plus the specification
+    drafts and schemas. There is no request/response API to characterise.
+discovery:
+  access_method: root-relative
+  path: /apis.*
+  extensions_defined: [.json, .yml, .yaml, .txt, .md]
+  transport: HTTP or HTTPS
+  spec_section: '3.1'
+  rules:
+    - >-
+      A robot that gets a 2xx MUST read, parse and follow the instructions in the
+      document.
+    - >-
+      A 404 means the robot can assume no instructions are available — absence is a
+      defined, valid answer, not an error condition.
+    - >-
+      A parsed document may reference further apis.* files elsewhere on the same
+      filesystem or anywhere on the internet; following them is optional.
+  observed_on_provider:
+    - {url: 'https://apisjson.org/apis.yml', status: 200, content_type: text/yaml}
+    - {url: 'https://apisjson.org/apis.json', status: 404}
+authority:
+  spec_section: '3.2'
+  authoritative: >-
+    An entry is AUTHORITATIVE for a domain when the root domain of the API it describes
+    is on the same DNS domain or a subdomain of it. 0.23 adds a second route: an entry is
+    also authoritative when the API's root domain is listed on the GitHub organization
+    profile associated with the repository.
+  non_authoritative: Any entry that is not authoritative.
+  authority_by_reference:
+    status: open-for-discussion
+    note: >-
+      Section 3.2.3 is explicitly unresolved in 0.23 — whether a top-level index may
+      confer authority on entries it points at, hosted on other servers, is marked "For
+      Discussion". This is a live ambiguity a consumer must decide for itself.
+conflict_resolution:
+  spec_section: '3.2.4'
+  rules:
+    - Authoritative entries take priority over non-authoritative entries.
+    - >-
+      Between two authoritative entries on different subdomains, the file closest to the
+      specific domain of the API's root domain wins.
+  worked_example: >-
+    For an API at mainapi.commerce.company.com described in both company.com/apis.json
+    and commerce.company.com/apis.json, the commerce.company.com copy is the more
+    authoritative.
+caching:
+  spec_section: '3.4'
+  mechanism: standard HTTP cache-control
+  rules:
+    - Robots may cache apis.* files but must periodically verify freshness before use.
+    - Robots should honour the origin server's Expires header.
+    - Default expiry when no cache-control directive is present is 7 days.
+versioning:
+  in_document_field: specificationVersion
+  scheme: two-part decimal draft (0.11 - 0.23)
+  see: lifecycle/apis-json-lifecycle.yml
+extensibility:
+  spec_section: '3.9'
+  spec_text_status: TBD
+  actual_mechanism_from_schema: >-
+    Section 3.9 is an unwritten "TBD", but the JSON Schema defines the mechanism
+    concretely: root-level patternProperties "^[Xx]-" admits custom objects, and
+    additionalProperties is false otherwise, so an unreserved bare key is invalid.
+    Custom PROPERTY TYPES are likewise prefixed x- or X-; 0.22 states both cases are
+    valid and lower case is preferred, matching OpenAPI and JSON Schema convention.
+  promotion_path: >-
+    The specification's working method is to promote an x- type into the reserved list
+    once measured adoption justifies it — 0.22 promoted by a threshold of 100 distinct
+    publishing organizations, 0.23 promoted a long tail counted across 26,866 indexes.
+  vcard_extensions: >-
+    x-twitter and x-github on contact entries are deliberately X-prefixed because that
+    is their form in vCard, from which the contact shape is borrowed (RFC 6350).
+media_type:
+  declared: application/apis+json (intended), application/apis+yaml (intended)
+  registered: false
+  served_in_practice: text/yaml
+  see: conformance/apis-json-conformance.yml
+link_relation:
+  declared: 'rel="api"'
+  registered: false
+  usage: >-
+    A site is recommended to reference its index with
+    <link rel="api" type="application/apis+json" href="https://example.com/apis.json" />
+  see: conformance/apis-json-conformance.yml
+authentication:
+  applicable: false
+  note: >-
+    The format defines no auth of its own. Authentication, OAuthScopes, OpenIDConnect
+    and APIKeys are reserved property TYPES that point at the described API's auth.
+pagination:
+  applicable: false
+  note: >-
+    No collection endpoint exists. Scale is handled structurally instead, by the include
+    array, which federates one index to another.
+idempotency:
+  coverage: na
+  applicable: false
+  scope: []
+  note: >-
+    There is no mutating surface — no write operation, and therefore no replay to
+    protect against. Recorded as na, not none: none would assert a missing mechanism on
+    a surface that could have one. No Idempotency pointer is emitted.
+reversibility:
+  grade: na
+  applicable: false
+  write_surfaces: []
+  note: >-
+    No write surface exists, so there is no action for an agent to take back. The nearest
+    analogue is editorial rather than transactional: every published draft is retained at
+    its original URL (see lifecycle/apis-json-lifecycle.yml), so a consumer that needs to
+    revert to an earlier version of the format can always still resolve it.
+dry_run_mode:
+  supported: false
+  applicable: false
+  note: >-
+    Not applicable for the same reason. The closest real capability is validation — a
+    document can be checked against the published JSON Schema before publication — but
+    that is client-side, not a provider-offered rehearsal mode.
+error_semantics:
+  applicable: false
+  note: >-
+    No error envelope. The only status semantics the specification defines are the
+    consumer-side rules in section 3.1: 2xx means parse and follow, 404 means no
+    instructions available.
+rate_limiting:
+  applicable: false
+  note: >-
+    No published limits; the specification surface is static files. See
+    rate-limits/apis-json-rate-limits.yml.
+cross_links:
+  - conformance/apis-json-conformance.yml
+  - lifecycle/apis-json-lifecycle.yml
+  - data-model/apis-json-data-model.yml
+  - changelog/apis-json-changelog.yml
+  - well-known/apis-json-well-known.yml

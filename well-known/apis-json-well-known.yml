@@ -1,0 +1,81 @@
+generated: '2026-09-14'
+method: probed
+source: live HTTP probes of every host this record knows (apisjson.org, www.apisjson.org)
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Probe of the RFC-defined /.well-known/ path set across every host in this record.
+  APIs.json is a specification published as a static GitHub Pages site; it serves
+  no /.well-known/ documents at all. Recorded as an honest absence — no WellKnown
+  or SecurityTxt pointer is emitted, because nothing returned a real document.
+note: >-
+  Worth recording for its own sake: section 3.7 of the APIs.json 0.23 specification
+  states the intent to register "/apis.json" or "/apis.yaml" as a well-known
+  location. The specification's own site does not serve /.well-known/apis.json (404)
+  and does not serve /apis.json (404) — it serves /apis.yml at the domain root (200,
+  text/yaml), which is the root-relative access method section 3.1 actually defines.
+hosts:
+  - host: apisjson.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+  - host: www.apisjson.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+root_documents:
+  - host: apisjson.org
+    path: /apis.yml
+    status: 200
+    content_type: text/yaml
+    note: The provider's own APIs.json index, served as YAML at the domain root.
+  - host: apisjson.org
+    path: /apis.json
+    status: 404
+  - host: apisjson.org
+    path: /llms.txt
+    status: 404
+  - host: apisjson.org
+    path: /robots.txt
+    status: 200
+  - host: apisjson.org
+    path: /sitemap.xml
+    status: 404
+  - host: apisjson.org
+    path: /atom.xml
+    status: 404
+    note: >-
+      The provider's own /apis.yml advertises a BlogFeed at https://apisjson.org/atom.xml.
+      That URL 404s — a dead pointer in the provider's published index.

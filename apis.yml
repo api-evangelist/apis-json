@@ -8,8 +8,11 @@ description: >-
   machine-readable specifications, and ancillary information such as licensing,
   maintainers, and terms of service. It was created by Kin Lane and Steven
   Willmott in May 2014 and is maintained as an open IETF-style draft. The
-  current stable version is 0.19, published in November 2024. APIs.json files
-  can be placed at the root of any domain as /apis.json or /apis.yml for
+  current stable version is 0.23, published August 19, 2026, following a rapid
+  2026 release sequence (0.19 through 0.23) that added the prompts, rules and
+  workflows collections in 0.21 and registered roughly seventy new property
+  types in 0.22 and 0.23 by measured adoption across 26,866 published indexes.
+  APIs.json files can be placed at the root of any domain as /apis.json or /apis.yml for
   automated discovery. The specification defines root-level fields (name,
   description, url, apis, common), API-level fields (aid, humanURL, baseURL,
   tags, properties), and a comprehensive list of property types covering
@@ -64,7 +67,7 @@ tags_raw:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-04-19'
+modified: '2026-09-14'
 specificationVersion: '0.23'
 apis:
   - aid: apis-json:apis-json-specification
@@ -76,11 +79,13 @@ apis:
       of one or more APIs — documentation, authentication, pricing, terms of
       service, support, and other properties. Created by Kin Lane and Steven
       Willmott in May 2014, the specification is maintained as an informal IETF
-      draft at apisjson.org. The current stable version is 0.19, published
-      November 6, 2024. APIs.json files are placed at the domain root as
+      draft at apisjson.org. The current stable version is 0.23, published
+      August 19, 2026. APIs.json files are placed at the domain root as
       /apis.json or /apis.yml for automated discovery by robots and search
       engines.
     humanURL: https://apisjson.org
+    baseURL: https://apisjson.org
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - API Description
       - API Discovery
@@ -99,8 +104,40 @@ apis:
       - type: Documentation
         url: https://apisjson.org/schema/
       - type: Specification
+        url: https://apisjson.org/format/apisjson_0.23.txt
+        title: Draft 0.23 (current, provider-published)
+      - type: Specification
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.23.txt
+        title: Draft 0.23
+      - type: Specification
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.22.txt
+        title: Draft 0.22
+      - type: Specification
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.21.txt
+        title: Draft 0.21
+      - type: Specification
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.20.txt
+        title: Draft 0.20
+      - type: Specification
         url: >-
           https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.19.txt
+        title: Draft 0.19
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.23.yaml
+        title: Schema v0.23 (current)
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.22.yaml
+        title: Schema v0.22
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.21.yaml
+        title: Schema v0.21
       - type: JSONSchema
         url: >-
           https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.19.yaml
@@ -116,7 +153,7 @@ apis:
       - type: JSONSchema
         url: >-
           https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.20.yaml
-        title: Schema v0.20 (Draft)
+        title: Schema v0.20
 common:
   - type: License
     name: MIT
@@ -125,8 +162,9 @@ common:
     url: security/apis-json-domain-security.yml
   - type: Website
     url: https://apisjson.org
-  - type: Properties
+  - type: Documentation
     url: https://apisjson.org/properties/
+    title: Reserved property types
   - type: Blog
     url: https://apisjson.org/blog/
   - type: GitHubOrganization
@@ -189,9 +227,11 @@ common:
           APIs.json entries, enabling provider-agnostic enrichment of API metadata.
       - name: Version History
         description: >-
-          Maintained as a versioned specification from 0.11 through current 0.19,
+          Maintained as a versioned specification from 0.11 through current 0.23,
           with full version history and diff comparisons available on GitHub and
-          apisjson.org.
+          apisjson.org. Every draft ever published is still retained at its
+          original URL, so an index written against an older version keeps a live
+          normative reference.
   - type: UseCases
     data:
       - name: API Discovery
@@ -253,6 +293,44 @@ common:
           APIs.json supports AsyncAPI as a property type, allowing event-driven
           and message-based APIs to be documented alongside REST APIs in a single
           APIs.json file.
+  - type: APIReference
+    url: https://apisjson.org/properties/
+    title: Reserved property type reference
+  - type: IssueTracker
+    url: https://github.com/apis-json/api-json/issues
+  - type: ChangeLog
+    url: changelog/apis-json-changelog.yml
+  - type: Lifecycle
+    url: lifecycle/apis-json-lifecycle.yml
+  - type: Conformance
+    url: conformance/apis-json-conformance.yml
+  - type: Conventions
+    url: conventions/apis-json-conventions.yml
+  - type: DataModel
+    url: data-model/apis-json-data-model.yml
+  - type: Packages
+    url: packages/apis-json-packages.yml
+  - type: LLMsTxt
+    url: llms/apis-json-llms.txt
+  - type: RateLimits
+    url: rate-limits/apis-json-rate-limits.yml
+  - type: Plans
+    url: plans/apis-json-plans-pricing.yml
+  - type: Examples
+    url: examples/apis-json-complete-example.json
+    title: Complete worked example
+  - type: Examples
+    url: examples/apis-json-minimal-example.json
+    title: Minimal worked example
+  - type: JSONStructure
+    url: json-structure/apis-json-structure-0.20-structure.json
+  - type: JSONLD
+    url: json-ld/apis-json-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-14'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v3

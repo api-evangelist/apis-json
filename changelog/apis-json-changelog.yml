@@ -1,0 +1,147 @@
+generated: '2026-09-14'
+method: searched
+source: https://apisjson.org/blog/
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Release history of the APIs.json specification. Every version is published as a
+  numbered draft at https://apisjson.org/format/apisjson_<version>.txt, with a dated
+  "What's New" post on the specification blog and a rendered diff in the
+  github.com/apis-json/diff repository. Recent window only.
+scheme: informal-draft
+scheme_note: >-
+  Two-part decimal draft numbering (0.11 through 0.23). There is no 1.0 release and
+  no stated date for one; the specification describes itself as a "Draft for Comment".
+  Each release ships as a plain-text draft plus a JSON Schema of the same version
+  number (spec/schema_<version>.yml in the specification repository).
+current_version: '0.23'
+current_version_date: '2026-08-19'
+changelog_url: https://apisjson.org/blog/
+diff_url: https://github.com/apis-json/diff
+spec_index_url: https://apisjson.org/
+versions_published:
+  - '0.11'
+  - '0.12'
+  - '0.13'
+  - '0.14'
+  - '0.15'
+  - '0.16'
+  - '0.17'
+  - '0.18'
+  - '0.19'
+  - '0.20'
+  - '0.21'
+  - '0.22'
+  - '0.23'
+entries:
+  - version: '0.23'
+    date: '2026-08-19'
+    type: vocabulary
+    breaking: false
+    source: https://apisjson.org/format/apisjson_0.23.txt
+    post: https://apisjson.org/2026/08/19/whats-new-in-apis-json-023/
+    highlights:
+      - >-
+        Registers eight property types that publishers were already using and the
+        specification was rejecting, counted across 26,866 published APIs.json indexes:
+        ContentSignal, APIKeys, APIKey, Standard, Certification, Licensing.
+      - >-
+        Accepts "API Key" and "API Keys" as synonyms of APIKeys, continuing the
+        synonym position taken in 0.22.
+      - >-
+        Repairs the reserved-words listing, which had fallen 117 canonical types behind
+        the JSON Schema through 0.22 — types promoted in 0.21 and 0.22 validated but
+        were undocumented. The listing is now generated from the schema and the two are
+        verified to agree.
+    additions:
+      - ContentSignal
+      - APIKeys
+      - APIKey
+      - Standard
+      - Certification
+      - Licensing
+  - version: '0.22'
+    date: '2026-08-11'
+    type: vocabulary
+    breaking: false
+    source: https://apisjson.org/format/apisjson_0.22.txt
+    post: https://apisjson.org/2026/08/11/whats-new-in-apis-json-022/
+    highlights:
+      - >-
+        Largest vocabulary release to date, promoted by measured use across 26,598
+        published APIs.json indexes; a type qualified at 100+ distinct organizations.
+        DomainSecurity alone appeared on 23,135 indexes and was invalid under 0.21.
+      - >-
+        Security and trust types: DomainSecurity, VulnerabilityDisclosure, TrustCenter,
+        WellKnown, SecurityTxt, OAuthScopes, OpenIDConnect, SecurityPolicy, APICatalog.
+      - >-
+        Agent and AI surface types: AgenticAccess, LLMsTxt, AgentSkill, AgentCard,
+        MCPClient, A2A.
+      - >-
+        Operational / DX types: Lifecycle, Conventions, ErrorCatalog, DataModel,
+        Packages, Idempotency, Components, Deprecation, HelpCenter, DeclineCodes,
+        Postman, Protobuf, SignUp, Quickstart, Playground.
+      - >-
+        Open-source and supply-chain types: SourceCode, Repository, HelmChart,
+        DockerImage, SBOM, Attestation, Provenance, Releases, IssueTracker.
+      - >-
+        Accepts recognised alternate spellings ("Terms of Service", "Sign Up",
+        LlmsText, "Python SDK") beside the canonical names.
+    additions_count_note: >-
+      Roughly 60 new reserved types plus a synonym layer; see the NEW IN 0.22 section of
+      the 0.23 draft for the full enumerated list with per-type adoption counts.
+  - version: '0.21'
+    date: '2026-06-26'
+    type: structural
+    breaking: false
+    source: https://apisjson.org/format/apisjson_0.21.txt
+    post: https://apisjson.org/2026/06/26/whats-new-in-apis-json-021/
+    highlights:
+      - >-
+        Adds three new top-level collections, each also available on an individual API
+        entry, mirroring the existing common/properties split — prompts (Prompt,
+        AgentPrompt, PromptTemplate), rules (SpectralRules, Rules, GovernanceRules),
+        and workflows (Arazzo, ServerlessWorkflow, Workflow).
+      - >-
+        Documents the top-level kind field, classifying the entity an index describes —
+        company, government, opensource, standard, contract, topic.
+      - >-
+        Entries in the new collections reuse the property shape: type, url or inline
+        data, plus optional name, description, mediaType and tags.
+    additions:
+      - prompts
+      - rules
+      - workflows
+      - kind
+  - version: '0.20'
+    date: '2026-05-02'
+    type: vocabulary
+    breaking: false
+    source: https://apisjson.org/format/apisjson_0.20.txt
+    post: https://apisjson.org/2026/05/02/whats-new-in-apis-json-020/
+    highlights:
+      - >-
+        Described at publication as the largest vocabulary expansion in the
+        specification's history, moving types out of the X- custom prefix space into
+        the schema-validated reserved list.
+      - >-
+        New technical-contract types: JSONStructure, Vocabulary, SpectralRules,
+        AgentSkills, LlmsText, ModelContextProtocol, MockRestServer, MockMCPServer,
+        BackstageApi, ApiExamples, Standards, Services.
+      - >-
+        Formally reserves formats previously documented in prose but absent from schema
+        validation, including ALPS, Arazzo and JSONForms.
+  - version: '0.19'
+    date: '2026-05-03'
+    type: structural
+    breaking: false
+    source: https://apisjson.org/format/apisjson_0.19.txt
+    post: https://apisjson.org/2026/05/03/whats-new-in-apis-json-019/
+    highlights:
+      - >-
+        First-class definitions for GitHubOrg, GitHubRepo, PostmanCollection,
+        PostmanWorkspace and AsyncAPI property types.
+      - Adds support for referencing OpenAPI Overlays from an APIs.json index.
+      - >-
+        Was the long-standing stable version referenced across tooling before the
+        0.20-0.23 sequence; note the 0.19 post is dated one day after the 0.20 post.

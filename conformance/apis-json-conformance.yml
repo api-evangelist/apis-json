@@ -1,0 +1,121 @@
+generated: '2026-09-14'
+method: searched
+source: >-
+  https://apisjson.org/format/apisjson_0.23.txt (sections 3.1-3.9) plus first-party
+  schema https://raw.githubusercontent.com/apis-json/api-json/develop/spec/schema_0.23.yml,
+  cross-checked against the IANA link-relation and media-type registries
+provider: APIs.json
+providerId: apis-json
+description: >-
+  Standards conformance of the APIs.json specification itself, read from the contract
+  (the 0.23 draft and its JSON Schema) rather than from marketing prose. APIs.json is a
+  document format, so the standards that apply to it are format and registry standards,
+  not API runtime standards. Several registrations the draft describes are stated as
+  INTENT and have not happened — those are recorded as conforms: false with the registry
+  lookup that establishes it, because the difference is what decides whether a generic
+  client can negotiate the format.
+conformance:
+  - id: json-schema-2020-12
+    name: JSON Schema draft 2020-12
+    conforms: true
+    evidence: >-
+      spec/schema_0.23.yml declares
+      "$schema": https://json-schema.org/draft/2020-12/schema. Every published version
+      from 0.14 forward ships a machine-readable schema of the same version number, and
+      0.23 generates the specification's reserved-word listing from that schema so the
+      two are verified to agree.
+    source: https://raw.githubusercontent.com/apis-json/api-json/develop/spec/schema_0.23.yml
+  - id: json
+    name: JSON (RFC 8259)
+    conforms: true
+    evidence: >-
+      Section 3.3.1 defines the formal syntax as JSON; the format's name is literally
+      the file name.
+    source: https://apisjson.org/format/apisjson_0.23.txt
+  - id: yaml
+    name: YAML 1.2 as an alternate serialization
+    conforms: true
+    evidence: >-
+      Section 3.3.2 (Other Formats) admits YAML alongside JSON, and the specification
+      publishes its own index as YAML at https://apisjson.org/apis.yml (HTTP 200,
+      Content-Type text/yaml). The schema files are themselves YAML.
+    source: https://apisjson.org/apis.yml
+  - id: openapi
+    name: OpenAPI as a referenced contract type
+    conforms: true
+    evidence: >-
+      OpenAPI is a reserved property type; APIs.json wraps around a contract rather than
+      replacing one, and the reserved-word listing carries OpenAPI, AsyncAPI, GraphQL,
+      Protobuf, ALPS, Arazzo, JSONSchema and JSONStructure as sibling contract types.
+    source: https://apisjson.org/properties/
+  - id: iana-media-type-registration
+    name: IANA media type registration (RFC 6838 / RFC 4288)
+    conforms: false
+    evidence: >-
+      Section 3.5 states only an INTENT — "if there is sufficient traction, the media
+      type application/apis+json or application/x-yaml will be submitted to IANA".
+      The IANA media-types registry has no entry for application/apis+json
+      (https://www.iana.org/assignments/media-types/application/apis+json returns 404,
+      probed 2026-09-14). Consequence: there is no negotiable content type, and the
+      provider's own index is served as the generic text/yaml.
+    source: https://apisjson.org/format/apisjson_0.23.txt
+  - id: iana-link-relation-registration
+    name: IANA link relation registration (RFC 8288 / RFC 5988)
+    conforms: false
+    evidence: >-
+      Section 3.8 defines in-page discovery via <link rel="api" ...> and states the
+      intent to register the "api" relation "if there is sufficient traction". The IANA
+      link-relations registry contains api-catalog (RFC 9727) but no "api" relation
+      (probed 2026-09-14). An unregistered relation still works but is not
+      interoperable by registry lookup.
+    source: https://www.iana.org/assignments/link-relations/link-relations.xml
+  - id: rfc8615-well-known-uri
+    name: Well-Known URI registration (RFC 8615)
+    conforms: false
+    evidence: >-
+      Section 3.7 states the intent to register "/apis.json" or "/apis.yaml" as a
+      well-known location. It is not registered, and the specification's own site does
+      not serve /.well-known/apis.json (404, probed 2026-09-14). The defined access
+      method in section 3.1 remains a root-relative /apis.json, not a /.well-known/ path.
+    source: well-known/apis-json-well-known.yml
+  - id: rfc9727-api-catalog
+    name: RFC 9727 api-catalog well-known URI
+    conforms: false
+    evidence: >-
+      APIs.json is adjacent to, and complementary with, RFC 9727 — which registers
+      /.well-known/api-catalog and a linkset of API descriptions — but the 0.23 draft
+      makes no normative reference to RFC 9727, and APICatalog appears only as a
+      reserved property TYPE promoted in 0.22. The provider tags RFC 9727 on its own
+      index at https://apisjson.org/apis.yml; the RFC 9727 surface itself is served by
+      apis.io (https://apis.apis.io/.well-known/api-catalog), a separate property.
+    source: https://apisjson.org/apis.yml
+  - id: rfc9457-problem-details
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: >-
+      Not applicable rather than failed — the specification defines a document format
+      and no HTTP error surface, so there is no error envelope to shape.
+    applicable: false
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      Not applicable. APIs.json defines no authenticated surface of its own; it carries
+      Authentication, OAuthScopes, OpenIDConnect and APIKeys as reserved property types
+      that point at the described API's auth, not its own.
+    applicable: false
+domain_standard:
+  market: api-discovery-and-cataloging
+  declares_domain_standard: true
+  standard: APIs.json
+  note: >-
+    This record is the standard's own repository — APIs.json is the domain standard for
+    machine-readable API discovery rather than a consumer of one. The nearest peer
+    standards in the same market are RFC 9727 (api-catalog) and OpenAPI; the
+    relationship to each is recorded above.
+certifications: []
+compliance_programs: []
+compliance_note: >-
+  No certification or compliance program is published, and none would be expected — the
+  entity is an MIT-licensed open specification, not an operating service. No Compliance
+  pointer is emitted.
