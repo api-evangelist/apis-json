@@ -53,7 +53,7 @@ tags:
   - API Operations
   - Machine-Readable
   - Specification
-  - Standard
+  - Standards
 tags_raw:
   - API Aggregation
   - API Cataloging
@@ -92,7 +92,7 @@ apis:
       - API Operations
       - Machine-Readable
       - Specification
-      - Standard
+      - Standards
     tags_raw:
       - API Description
       - API Discovery
