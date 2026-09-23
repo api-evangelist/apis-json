@@ -1,0 +1,26 @@
+# Front Door AI Index — apis-json — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: apis-json
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: apisjson.org
+  final_host: apisjson.org
+  ownership: own
+  owner: apis-json
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 7
+  host_score: 7
+  density: 8.29
+  words: 844
+  tiers:
+    agentic: 4
+    core: 3
+    model: 0
+  ambiguous: 0
+  top_terms:
+    prompts: 4
+    AI: 3
