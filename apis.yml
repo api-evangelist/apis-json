@@ -87,7 +87,6 @@ apis:
       /apis.json or /apis.yml for automated discovery by robots and search
       engines.
     humanURL: https://apisjson.org
-    baseURL: https://apisjson.org
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - API Description
@@ -337,3 +336,6 @@ x-enrichment:
   status: enriched
   artifacts_added: 18
   pass: local-v3
+x-type: standards-body
+x-category: Specification
+x-host: null
