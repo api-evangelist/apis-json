@@ -157,6 +157,8 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.20.yaml
         title: Schema v0.20
 common:
+  - type: FinOps
+    url: finops/apis-json-finops.yml
   - type: License
     name: MIT
     url: https://github.com/apis-json/api-json/blob/develop/LICENSE
