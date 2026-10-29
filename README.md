@@ -1,4 +1,4 @@
-# APIs.json (apis-json)
+# APIs.json
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,135 +64,153 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-APIs.json is an open, machine-readable specification that API providers can use to describe their API operations, similar to how websites use sitemap.xml. The format provides a lightweight means for individuals and organizations to document the location of their APIs, associated descriptions, human and machine-readable specifications, and ancillary information such as licensing, maintainers, and terms of service. It was created by Kin Lane and Steven Willmott in May 2014 and is maintained as an open IETF-style draft. The current stable version is 0.19, published in November 2024. APIs.json files can be placed at the root of any domain as /apis.json or /apis.yml for automated discovery. The specification defines root-level fields (name, description, url, apis, common), API-level fields (aid, humanURL, baseURL, tags, properties), and a comprehensive list of property types covering documentation, authentication, licensing, support, and governance. It is the foundation for the APIs.io search engine and API Commons initiative.
+APIs.json is an open, machine-readable specification that API providers can use to describe their API operations, similar to how websites use sitemap.xml. The format provides a lightweight means for individuals and organizations to document the location of their APIs, associated descriptions, human and machine-readable specifications, and ancillary information such as licensing, maintainers, and terms of service. It was created by Kin Lane and Steven Willmott in May 2014 and is maintained as an open IETF-style draft. The current stable version is 0.23, published August 19, 2026, following a rapid 2026 release sequence (0.19 through 0.23) that added the prompts, rules and workflows collections in 0.21 and registered roughly seventy new property types in 0.22 and 0.23 by measured adoption across 26,866 published indexes. APIs.json files can be placed at the root of any domain as /apis.json or /apis.yml for automated discovery. The specification defines root-level fields (name, description, url, apis, common), API-level fields (aid, humanURL, baseURL, tags, properties), and a comprehensive list of property types covering documentation, authentication, licensing, support, and governance. It is the foundation for the APIs.io search engine and API Commons initiative.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/apis.yml)
+**Areas:** API Aggregation · API Cataloging · API Commons · API Discovery · API Governance · API Operations · Machine-Readable · Specification · Standards
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## APIs.json on APIs.io
 
-## Tags:
+Everything profiled for APIs.json is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apis-json/](https://apis.io/providers/apis-json/)** — or go straight to one of the APIs or properties below.
 
- - API Aggregation, API Cataloging, API Commons, API Discovery, API Governance, API Operations, Machine Readable, Specification, Standard
+### APIs (1)
 
-## Timestamps
+- [APIs.json Specification](https://apis.io/apis/apis-json/apis-json-specification/) — The APIs.json specification defines a machine-readable JSON or YAML format for describing API operations. Unlike OpenAPI which describes the technical…
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### APIs.json Specification
-The APIs.json specification defines a machine-readable JSON or YAML format for describing API operations. Unlike OpenAPI which describes the technical interface of a single API, APIs.json describes the surrounding operations of one or more APIs — documentation, authentication, pricing, terms of service, support, and other properties. Created by Kin Lane and Steven Willmott in May 2014, the specification is maintained as an informal IETF draft at apisjson.org. The current stable version is 0.19, published November 6, 2024. APIs.json files are placed at the domain root as /apis.json or /apis.yml for automated discovery by robots and search engines.
+#### JSON Schema (7)
 
-**Human URL:** [https://apisjson.org](https://apisjson.org)
+The data models the API reads and writes.
 
-#### Tags:
+- [A JSON Schema for apis.json, version 0.17](https://apis.io/schemas/apis-json/apis-json-schema-0.17/)
+- [JSON Schema for APIs.json 0.18](https://apis.io/schemas/apis-json/apis-json-schema-0.18/)
+- [JSON Schema for APIs.json 0.19](https://apis.io/schemas/apis-json/apis-json-schema-0.19/)
+- [JSON Schema for APIs.json 0.20](https://apis.io/schemas/apis-json/apis-json-schema-0.20/)
+- [JSON Schema for APIs.json 0.21](https://apis.io/schemas/apis-json/apis-json-schema-0.21/)
+- [JSON Schema for APIs.json 0.21](https://apis.io/schemas/apis-json/apis-json-schema-0.22/)
+- [JSON Schema for APIs.json 0.23](https://apis.io/schemas/apis-json/apis-json-schema-0.23/)
 
- - API Description, API Discovery, API Operations, Machine Readable, Specification, Standard
+#### JSON Structure (4)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://apisjson.org/schema/)
-- [Specification v0.19](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/spec/apisjson_0.19.txt)
-- [JSONSchema - Schema v0.19](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.19.yaml)
-- [JSONSchema - Schema v0.18](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.18.yaml)
-- [JSONSchema - Schema v0.17](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.17.yaml)
-- [JSONSchema - Schema v0.20 (Draft)](https://raw.githubusercontent.com/api-evangelist/apis-json/refs/heads/main/json-schema/apis-json-schema-0.20.yaml)
+- [Apis Json Structure 0.17 Structure](https://apis.io/json-structure/apis-json/apis-json-structure-0.17-structure/)
+- [Apis Json Structure 0.18 Structure](https://apis.io/json-structure/apis-json/apis-json-structure-0.18-structure/)
+- [Apis Json Structure 0.19 Structure](https://apis.io/json-structure/apis-json/apis-json-structure-0.19-structure/)
+- [Apis Json Structure 0.20 Structure](https://apis.io/json-structure/apis-json/apis-json-structure-0.20-structure/)
 
-## Common Properties
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Apis Json Context](https://apis.io/jsonld/apis-json/apis-json-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Apis Json Vocabulary](https://apis.io/vocabularies/apis-json/apis-json-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Apis Json Complete Example](https://apis.io/examples/apis-json/apis-json-complete-example/)
+- [Apis Json Minimal Example](https://apis.io/examples/apis-json/apis-json-minimal-example/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [APIs.json — jsonschema rules](https://apis.io/rules/apis-json/apis-json-jsonschema-spectral-rules/)
+- [APIs.json API Rules](https://apis.io/rules/apis-json/apis-json-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apis Json Domain Security](https://apis.io/security/apis-json/apis-json-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apis Json Plans Pricing](https://apis.io/plans/apis-json/apis-json-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apis Json Rate Limits](https://apis.io/rate-limits/apis-json/apis-json-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apis Json Finops](https://apis.io/finops/apis-json/apis-json-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://apisjson.org)
-- [Properties](https://apisjson.org/properties/)
-- [Blog](https://apisjson.org/blog/)
-- [GitHub Organization](https://github.com/apis-json)
-- [GitHub Repository - Specification](https://github.com/apis-json/api-json)
-- [GitHub Repository - Website](https://github.com/apis-json/apis-json-website)
-- [GitHub Repository - Artisanal Examples](https://github.com/apis-json/artisanal)
-- [GitHub Repository - Backstage Integration](https://github.com/apis-json/backstage)
+- [Documentation](https://apisjson.org/properties/)
+- [API reference](https://apisjson.org/properties/)
 - [Support](https://github.com/apis-json/api-json/issues)
+- [Blog](https://apisjson.org/blog/)
+- [GitHub](https://github.com/apis-json)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Machine-Readable API Operations | Provides a machine-readable format for documenting API operations beyond just the technical interface, covering documentation, pricing, authentication, terms of service, support, and governance. |
-| Domain Root Discovery | APIs.json files can be placed at /apis.json or /apis.yml at the root of any domain, enabling automated discovery by search engines and robots without prior knowledge of the API provider. |
-| Property Type System | Defines a comprehensive enumerated set of property types (OpenAPI, Documentation, Authentication, Pricing, Support, etc.) enabling consistent machine-readable indexing of API operations. |
-| Federation via Include | Supports federated API directories through include references, allowing a root APIs.json to reference other APIs.json files on different servers or domains. |
-| Multiple API Collections | A single APIs.json file can document multiple APIs in the apis array, with shared properties in the common section, enabling organization-wide API catalogs. |
-| Authority and Non-Authority | Defines authoritative (same DNS domain) and non-authoritative entries, with conflict resolution rules giving priority to the most specific authoritative entry. |
-| Overlay Support | Supports overlay specifications that can modify or extend existing APIs.json entries, enabling provider-agnostic enrichment of API metadata. |
-| Version History | Maintained as a versioned specification from 0.11 through current 0.19, with full version history and diff comparisons available on GitHub and apisjson.org. |
+**Kin Score 26.7** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 33.2 |
+| Contract governance | 45.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 0.0 |
 
-| Name | Description |
-|------|-------------|
-| API Discovery | API providers publish APIs.json files at their domain root so that search engines like APIs.io can automatically discover and index all their APIs without manual submission. |
-| API Governance | Platform teams use APIs.json as a canonical machine-readable index of their API portfolio, enabling automated compliance checking of required operational properties like terms of service and authentication. |
-| API Portal Generation | Developer portals can be automatically generated from APIs.json files by reading the properties array and presenting documentation, OpenAPI specs, getting started guides, and other resources. |
-| API Commons Participation | Organizations publish APIs.json files to participate in the API Commons initiative, making their APIs discoverable and accessible to a wider developer community. |
-| Internal API Catalog | Enterprises use APIs.json as the foundation for internal API catalogs, enabling discoverability of internal, partner, and public APIs using a consistent machine-readable format. |
-| Backstage Integration | Teams use the APIs.json Backstage integration to import API metadata from APIs.json files into Spotify Backstage for internal developer portal use. |
+**Agent readiness 3.8** — human-only
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| APIs.io | The APIs.io search engine is built entirely on the APIs.json specification, indexing submitted APIs.json files to power its API discovery and search capabilities. |
-| API Commons | API Commons uses APIs.json as its core metadata format for documenting API operations across the open API ecosystem. |
-| OpenAPI | APIs.json references OpenAPI specifications as a core property type, linking machine-readable API interface descriptions to their operations metadata. |
-| Backstage | APIs.json files can be imported into Spotify Backstage using the apis-json/backstage integration tool for enterprise developer portal use. |
-| Spectral | Spectral rulesets can validate APIs.json files against the specification schema and enforce organizational governance rules for API operations. |
-| AsyncAPI | APIs.json supports AsyncAPI as a property type, allowing event-driven and message-based APIs to be documented alongside REST APIs in a single APIs.json file. |
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apis-json/](https://apis.io/providers/apis-json/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### Specification
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [APIs.json v0.19 Specification Text](spec/apisjson_0.19.txt)
-- [APIs.json v0.18 Specification Text](spec/apisjson_0.18.txt)
-- [APIs.json v0.17 Specification Text](spec/apisjson_0.17.txt)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for APIs.json: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Schema v0.20 (Draft)](json-schema/apis-json-schema-0.20.yaml)
-- [Schema v0.19](json-schema/apis-json-schema-0.19.yaml)
-- [Schema v0.18](json-schema/apis-json-schema-0.18.yaml)
-- [Schema v0.17](json-schema/apis-json-schema-0.17.yaml)
-- [Schema v0.19 (JSON)](json-schema/apis-json-schema-0.19.json)
-- [Schema v0.18 (JSON)](json-schema/apis-json-schema-0.18.json)
-- [Schema v0.17 (JSON)](json-schema/apis-json-schema-0.17.json)
-- [Schema v0.20 (JSON)](json-schema/apis-json-schema-0.20.json)
-
-### JSON Structure
-
-- [Structure v0.19](json-structure/apis-json-structure-0.19-structure.json)
-- [Structure v0.18](json-structure/apis-json-structure-0.18-structure.json)
-- [Structure v0.17](json-structure/apis-json-structure-0.17-structure.json)
-- [Structure v0.20](json-structure/apis-json-structure-0.20-structure.json)
-
-### JSON-LD
-
-- [APIs.json Context](json-ld/apis-json-context.jsonld)
-
-### Examples
-
-- [Minimal APIs.json Example](examples/apis-json-minimal-example.json)
-- [Complete APIs.json Example](examples/apis-json-complete-example.json)
-
-## Vocabulary
-
-- [APIs.json Vocabulary](vocabulary/apis-json-vocabulary.yaml) — Normative vocabulary mapping 4 resources, 7 actions, 1 workflow, and 3 personas covering the APIs.json specification format, property type system, and conformance levels
-
-## Rules
-
-- [APIs.json Spectral Rules](rules/apis-json-spectral-rules.yml) — 40 rules across 8 categories enforcing APIs.json specification conformance at Minimal, Discoverable, Complete, and Production levels
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apis-json/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
